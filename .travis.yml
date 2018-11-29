@@ -4,7 +4,7 @@ before_install:
   - git config --global user.name "Dist Zilla Plugin TravisCI"
   - git config --global user.email $HOSTNAME":not-for-mail@travis-ci.org"
 install:
-  - cpanm --notest --skip-satisfied cpanm Pod::Weaver::Section::Support Test::Pod Text::Autoformat Test::TrailingSpace Dist::Zilla
+  - cpanm --notest --skip-satisfied Pod::Weaver::Section::Support Test::Pod Text::Autoformat Test::TrailingSpace Dist::Zilla
   - dzil authordeps         | cpanm --notest --skip-satisfied
   - dzil listdeps --author  | cpanm --notest --skip-satisfied
 
