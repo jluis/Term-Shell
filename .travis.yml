@@ -13,10 +13,9 @@ before_install:
   - "perlbrew exec --with $stableperl 'dzil authordeps | cpanm --quiet --notest --skip-satisfied'"
   - "perlbrew exec --with $stableperl 'dzil listdeps --author  | cpanm --notest --skip-satisfied'"
   - "perlbrew exec --with $stableperl 'dzil build --in $builddir'"
-  - cd $buildir
 
 install:
-  - cpanm --installdeps .
+  - '(cd $builddir && cpanm --quiet --notest --installdeps --skip-satisfied .)'
 # cpanm --notest --skip-satisfied Pod::Weaver::Section::Support Test::Pod Text::Autoformat Test::TrailingSpace
 #  - dzil authordeps         | cpanm --notest --skip-satisfied
 #  - dzil listdeps --author  | cpanm --notest --skip-satisfied
@@ -35,4 +34,4 @@ perl:
 # - '5.26'
 # - '5.28'
 script:
-  - prove -lr t
+   - '(cd $builddir && cpanm --test-only .)'  
