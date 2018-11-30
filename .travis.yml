@@ -16,7 +16,7 @@ before_install:
 
 install:
   - '(cd $builddir && cpanm --quiet --notest --installdeps --skip-satisfied .)'
-# cpanm --notest --skip-satisfied Pod::Weaver::Section::Support Test::Pod Text::Autoformat Test::TrailingSpace
+  - cpanm --notest --skip-satisfied Test::CPAN::Changes Test::Kwalitee #Pod::Weaver::Section::Support Test::Pod Text::Autoformat Test::TrailingSpace
 #  - dzil authordeps         | cpanm --notest --skip-satisfied
 #  - dzil listdeps --author  | cpanm --notest --skip-satisfied
   
@@ -35,4 +35,3 @@ perl:
 # - '5.28'
 script:
    - '(cd $builddir && prove -lr t)'
-   - '(cd $builddir && cpanm --test-only .)'  
