@@ -34,4 +34,5 @@ perl:
 # - '5.26'
 # - '5.28'
 script:
+   - '(cd $builddir && prove -lr t)'
    - '(cd $builddir && cpanm --test-only .)'  
