@@ -10,13 +10,13 @@ before_install:
   - "export stableperl=`perlbrew list | tail -1`"
   - perlbrew list
   - "perlbrew exec --with $stableperl 'cpanm --quiet --notest --skip-satisfied Pod::Weaver::Section::Support Test::Pod Text::Autoformat Test::TrailingSpace Dist::Zilla'"
-  - "perlbrew exec --with $stableperl 'dzil authordeps | cpanm --quiet --notest'"
-  - "perlbrew exec --with $stableperl  'dzil listdeps --author  | cpanm --notest --skip-satisfied'"
+  - "perlbrew exec --with $stableperl 'dzil authordeps | cpanm --quiet --notest --skip-satisfied'"
+  - "perlbrew exec --with $stableperl 'dzil listdeps --author  | cpanm --notest --skip-satisfied'"
   - "perlbrew exec --with $stableperl 'dzil build --in $builddir'"
   - cd $buildir
 
 install:
-  - cpanm --quiet --notest --installdeps .
+  - cpanm --installdeps .
 # cpanm --notest --skip-satisfied Pod::Weaver::Section::Support Test::Pod Text::Autoformat Test::TrailingSpace
 #  - dzil authordeps         | cpanm --notest --skip-satisfied
 #  - dzil listdeps --author  | cpanm --notest --skip-satisfied
